@@ -21,7 +21,8 @@ import java.util.List;
  * author zaaach on 2016/1/26.
  */
 public class CityListAdapter extends BaseAdapter {
-    private static final int VIEW_TYPE_COUNT = 3;
+//    private static final int VIEW_TYPE_COUNT = 3;
+    private static final int VIEW_TYPE_COUNT = 2;
 
     private Context mContext;
     private LayoutInflater inflater;
@@ -39,8 +40,8 @@ public class CityListAdapter extends BaseAdapter {
         if (mCities == null){
             mCities = new ArrayList<>();
         }
-        mCities.add(0, new City("定位", "0"));
-        mCities.add(1, new City("热门", "1"));
+//        mCities.add(0, new City("定位", "0"));
+        mCities.add(0, new City("热门", "0"));
         int size = mCities.size();
         letterIndexes = new HashMap<>();
         sections = new String[size];
@@ -106,7 +107,8 @@ public class CityListAdapter extends BaseAdapter {
         CityViewHolder holder;
         int viewType = getItemViewType(position);
         switch (viewType){
-            case 0:     //定位
+            /*case 0:     //定位
+                System.out.println("zhang--------定位"+position);
                 view = inflater.inflate(R.layout.cp_view_locate_city, parent, false);
                 ViewGroup container = (ViewGroup) view.findViewById(R.id.layout_locate);
                 TextView state = (TextView) view.findViewById(R.id.tv_located_city);
@@ -137,8 +139,8 @@ public class CityListAdapter extends BaseAdapter {
                         }
                     }
                 });
-                break;
-            case 1:     //热门
+                break;*/
+            case 0:     //热门
                 view = inflater.inflate(R.layout.cp_view_hot_city, parent, false);
                 WrapHeightGridView gridView = (WrapHeightGridView) view.findViewById(R.id.gridview_hot_city);
                 final HotCityGridAdapter hotCityGridAdapter = new HotCityGridAdapter(mContext);
@@ -152,7 +154,7 @@ public class CityListAdapter extends BaseAdapter {
                     }
                 });
                 break;
-            case 2:     //所有
+            case 1:     //所有
                 if (view == null){
                     view = inflater.inflate(R.layout.cp_item_city_listview, parent, false);
                     holder = new CityViewHolder();
